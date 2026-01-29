@@ -1,0 +1,6 @@
+# Ghostty Configuration
+
+# Font settings
+font-family = "Hack Nerd Font"
+font-style = italic
+font-size = 16

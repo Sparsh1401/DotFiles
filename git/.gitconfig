@@ -1,0 +1,40 @@
+[user]
+    email = sparsh.agarwal@vwo.com
+    name = Sparsh Agarwal
+
+[alias]
+    co = checkout
+    br = branch
+    ci = commit
+    st = status
+    df = diff
+    g = git
+    po = pull origin
+
+# Conditional include for personal projects
+[includeIf "gitdir:~/grindOnly/"]
+    path = ~/grindOnly/.gitconfig-personal
+
+[core]
+    editor = nvim
+    pager = delta
+
+[init]
+    defaultBranch = main
+
+[pull]
+    rebase = false
+
+[push]
+    autoSetupRemote = true
+
+[delta]
+    navigate = true
+    light = false
+    side-by-side = true
+
+[merge]
+    conflictstyle = diff3
+
+[diff]
+    colorMoved = default

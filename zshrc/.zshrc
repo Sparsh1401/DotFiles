@@ -1,145 +1,215 @@
+# Enable Powerlevel10k instant prompt. Should stay close to the top of ~/.zshrc.
+# Initialization code that may require console input (password prompts, [y/n]
+# confirmations, etc.) must go above this block; everything else may go below.
+if [[ -r "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh" ]]; then
+  source "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh"
+fi
+
+# If you come from bash you might have to change your $PATH.
+# export PATH=$HOME/bin:/usr/local/bin:$PATH
+
 # Path to your oh-my-zsh installation.
-export ZSH=/Users/omerhamerman/.oh-my-zsh
-# Reevaluate the prompt string each time it's displaying a prompt
-setopt prompt_subst
-zstyle ':completion:*' matcher-list 'm:{a-z}={A-Za-z}'
-autoload bashcompinit && bashcompinit
-autoload -Uz compinit
-compinit
-source <(kubectl completion zsh)
-complete -C '/usr/local/bin/aws_completer' aws
+export ZSH="$HOME/.oh-my-zsh"
 
-source $(brew --prefix)/share/zsh-autosuggestions/zsh-autosuggestions.zsh
-bindkey '^w' autosuggest-execute
-bindkey '^e' autosuggest-accept
-bindkey '^u' autosuggest-toggle
-bindkey '^L' vi-forward-word
-bindkey '^k' up-line-or-search
-bindkey '^j' down-line-or-search
+# Set name of the theme to load --- if set to "random", it will
+# load a random theme each time oh-my-zsh is loaded, in which case,
+# to know which specific one was loaded, run: echo $RANDOM_THEME
+# See https://github.com/ohmyzsh/ohmyzsh/wiki/Themes
+ZSH_THEME="powerlevel10k/powerlevel10k"
 
-eval "$(starship init zsh)"
-export STARSHIP_CONFIG=~/.config/starship/starship.toml
+POWERLEVEL9K_MODE='nerdfont-complete'
+
+# Set list of themes to pick from when loading at random
+# Setting this variable when ZSH_THEME=random will cause zsh to load
+# a theme from this variable instead of looking in $ZSH/themes/
+# If set to an empty array, this variable will have no effect.
+# ZSH_THEME_RANDOM_CANDIDATES=( "robbyrussell" "agnoster" )
+
+# Uncomment the following line to use case-sensitive completion.
+# CASE_SENSITIVE="true"
+
+# Uncomment the following line to use hyphen-insensitive completion.
+# Case-sensitive completion must be off. _ and - will be interchangeable.
+# HYPHEN_INSENSITIVE="true"
+
+# Uncomment one of the following lines to change the auto-update behavior
+# zstyle ':omz:update' mode disabled  # disable automatic updates
+# zstyle ':omz:update' mode auto      # update automatically without asking
+# zstyle ':omz:update' mode reminder  # just remind me to update when it's time
+
+# Uncomment the following line to change how often to auto-update (in days).
+# zstyle ':omz:update' frequency 13
+
+# Uncomment the following line if pasting URLs and other text is messed up.
+# DISABLE_MAGIC_FUNCTIONS="true"
+
+# Uncomment the following line to disable colors in ls.
+# DISABLE_LS_COLORS="true"
+
+# Uncomment the following line to disable auto-setting terminal title.
+# DISABLE_AUTO_TITLE="true"
+
+# Uncomment the following line to enable command auto-correction.
+# ENABLE_CORRECTION="true"
+
+# Uncomment the following line to display red dots whilst waiting for completion.
+# You can also set it to another string to have that shown instead of the default red dots.
+# e.g. COMPLETION_WAITING_DOTS="%F{yellow}waiting...%f"
+# Caution: this setting can cause issues with multiline prompts in zsh < 5.7.1 (see #5765)
+# COMPLETION_WAITING_DOTS="true"
+
+# Uncomment the following line if you want to disable marking untracked files
+# under VCS as dirty. This makes repository status check for large repositories
+# much, much faster.
+# DISABLE_UNTRACKED_FILES_DIRTY="true"
+
+# Uncomment the following line if you want to change the command execution time
+# stamp shown in the history command output.
+# You can set one of the optional three formats:
+# "mm/dd/yyyy"|"dd.mm.yyyy"|"yyyy-mm-dd"
+# or set a custom format using the strftime function format specifications,
+# see 'man strftime' for details.
+# HIST_STAMPS="mm/dd/yyyy"
+
+# Would you like to use another custom folder than $ZSH/custom?
+# ZSH_CUSTOM=/path/to/new-custom-folder
+
+# Which plugins would you like to load?
+# Standard plugins can be found in $ZSH/plugins/
+# Custom plugins may be added to $ZSH_CUSTOM/plugins/
+# Example format: plugins=(rails git textmate ruby lighthouse)
+# Add wisely, as too many plugins slow down shell startup.
+plugins=(git)
+
+source $ZSH/oh-my-zsh.sh
+
+# User configuration
+
+# export MANPATH="/usr/local/man:$MANPATH"
 
 # You may need to manually set your language environment
-export LANG=en_US.UTF-8
+# export LANG=en_US.UTF-8
 
-export EDITOR=/opt/homebrew/bin/nvim
+# Preferred editor for local and remote sessions
+# if [[ -n $SSH_CONNECTION ]]; then
+#   export EDITOR='vim'
+# else
+#   export EDITOR='mvim'
+# fi
 
-alias la=tree
-alias cat=bat
+# Compilation flags
+# export ARCHFLAGS="-arch x86_64"
 
-# Git
-alias gc="git commit -m"
-alias gca="git commit -a -m"
-alias gp="git push origin HEAD"
-alias gpu="git pull origin"
-alias gst="git status"
-alias glog="git log --graph --topo-order --pretty='%w(100,0,6)%C(yellow)%h%C(bold)%C(black)%d %C(cyan)%ar %C(green)%an%n%C(bold)%C(white)%s %N' --abbrev-commit"
-alias gdiff="git diff"
-alias gco="git checkout"
-alias gb='git branch'
-alias gba='git branch -a'
-alias gadd='git add'
-alias ga='git add -p'
-alias gcoall='git checkout -- .'
-alias gr='git remote'
-alias gre='git reset'
+# Set personal aliases, overriding those provided by oh-my-zsh libs,
+# plugins, and themes. Aliases can be placed here, though oh-my-zsh
+# users are encouraged to define aliases within the ZSH_CUSTOM folder.
+# For a full list of active aliases, run `alias`.
+#
+# Example aliases
+# alias zshconfig="mate ~/.zshrc"
+# alias ohmyzsh="mate ~/.oh-my-zsh"
+alias saber-1="gcloud compute ssh --zone "us-east4-c" "vwo-testapp-saber-1"  --project "wingify-k8s-test" --tunnel-through-iap"
+alias clickhouse="gcloud compute ssh --zone "us-east4-c" "vwo-testapp-clickhouse" --project "wingify-k8s-test" --tunnel-through-iap"
+alias gpom="git pull --ff-only origin master"
+alias gpoh="git push origin HEAD"
+export M2_HOME="/Users/sparshagarwal/Downloads/apache-maven-3.9.6"
+PATH="${M2_HOME}/bin:${PATH}"
+export PATH
 
-# Docker
-alias dco="docker compose"
-alias dps="docker ps"
-alias dpa="docker ps -a"
-alias dl="docker ps -l -q"
-alias dx="docker exec -it"
+# To customize prompt, run `p10k configure` or edit ~/.p10k.zsh.
+[[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh
 
-# Dirs
-alias ..="cd .."
-alias ...="cd ../.."
-alias ....="cd ../../.."
-alias .....="cd ../../../.."
-alias ......="cd ../../../../.."
+# warpify subshell
+printf '\eP$f{"hook": "SourcedRcFileForWarp", "value": { "shell": "zsh" }}\x9c'
 
-# GO
-export GOPATH='/Users/omerhamerman/go'
+### MANAGED BY RANCHER DESKTOP START (DO NOT EDIT)
+export PATH="/Users/sparshagarwal/.rd/bin:$PATH"
+### MANAGED BY RANCHER DESKTOP END (DO NOT EDIT)
 
-# VIM
-alias v="/opt/homebrew/bin/nvim"
+# Added by Antigravity
+export PATH="/Users/sparshagarwal/.antigravity/antigravity/bin:$PATH"
 
-# Nmap
-alias nm="nmap -sC -sV -oN nmap"
+# bun completions
+[ -s "/Users/sparshagarwal/.bun/_bun" ] && source "/Users/sparshagarwal/.bun/_bun"
 
-export PATH=/usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin:/Users/omer/.vimpkg/bin:${GOPATH}/bin:/Users/omerhamerman/.cargo/bin
+# bun
+export BUN_INSTALL="$HOME/.bun"
+export PATH="$BUN_INSTALL/bin:$PATH"
+export PATH="/opt/homebrew/opt/node@22/bin:$PATH"
 
-alias cl='clear'
 
-# K8S
-export KUBECONFIG=~/.kube/config
-alias k="kubectl"
-alias ka="kubectl apply -f"
-alias kg="kubectl get"
-alias kd="kubectl describe"
-alias kdel="kubectl delete"
-alias kl="kubectl logs"
-alias kgpo="kubectl get pod"
-alias kgd="kubectl get deployments"
-alias kc="kubectx"
-alias kns="kubens"
-alias kl="kubectl logs -f"
-alias ke="kubectl exec -it"
-alias kcns='kubectl config set-context --current --namespace'
-alias podname=''
+export PATH="$HOME/.local/bin:$PATH"
 
-# HTTP requests with xh!
-alias http="xh"
+# fzf shell integration
+source <(fzf --zsh)
 
-# VI Mode!!!
-bindkey jj vi-cmd-mode
+# Create a new clone and branch for parallel development.
+# Usage: ga <branch-name> [base-branch]
+unalias ga 2>/dev/null
+ga() {
+  if [[ -z "$1" ]]; then
+    echo "Usage: ga <branch-name> [base-branch]"
+    return 1
+  fi
+  local branch="$1"
+  local repo_name="$(basename "$PWD")"
+  local repo_url="$(git remote get-url origin)"
+  local clone_path="../${repo_name}-${branch}"
 
-# Eza
-alias l="eza -l --icons --git -a"
-alias lt="eza --tree --level=2 --long --icons --git"
+  # Use fzf to select base branch, defaulting to main
+  local base_branch="$(git branch -r --format='%(refname:short)' | sed 's|origin/||' | fzf --height=20 --prompt='Select base branch: ' --query="main")"
 
-# SEC STUFF
-alias gobust='gobuster dir --wordlist ~/security/wordlists/diccnoext.txt --wildcard --url'
-alias dirsearch='python dirsearch.py -w db/dicc.txt -b -u'
-alias massdns='~/hacking/tools/massdns/bin/massdns -r ~/hacking/tools/massdns/lists/resolvers.txt -t A -o S bf-targets.txt -w livehosts.txt -s 4000'
-alias server='python -m http.server 4445'
-alias tunnel='ngrok http 4445'
-alias fuzz='ffuf -w ~/hacking/SecLists/content_discovery_all.txt -mc all -u'
-alias gr='~/go/src/github.com/tomnomnom/gf/gf'
+  # If fzf was cancelled, fall back to main
+  if [[ -z "$base_branch" ]]; then
+    base_branch="main"
+  fi
 
-# FZF
-export FZF_DEFAULT_COMMAND='fd --type f --hidden --follow'
-[ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
+  echo "Creating clone at $clone_path from $base_branch..."
 
-export PATH=/opt/homebrew/bin:$PATH
+  # Clone with reference to current repo for speed/space savings
+  git clone --reference "$PWD" "$repo_url" "$clone_path"
 
-alias mat='osascript -e "tell application \"System Events\" to key code 126 using {command down}" && tmux neww "cmatrix"'
+  # Enter clone and set up branch
+  cd "$clone_path"
+  git checkout "$base_branch"
+  git checkout -b "sa/$branch"
 
-# Nix!
-export NIX_CONF_DIR=$HOME/.config/nix
-
-function ranger {
-	local IFS=$'\t\n'
-	local tempfile="$(mktemp -t tmp.XXXXXX)"
-	local ranger_cmd=(
-		command
-		ranger
-		--cmd="map Q chain shell echo %d > "$tempfile"; quitall"
-	)
-
-	${ranger_cmd[@]} "$@"
-	if [[ -f "$tempfile" ]] && [[ "$(cat -- "$tempfile")" != "$(echo -n `pwd`)" ]]; then
-		cd -- "$(cat "$tempfile")" || return
-	fi
-	command rm -f -- "$tempfile" 2>/dev/null
+  echo "Created clone at $clone_path on branch sa/$branch (based on $base_branch)"
 }
-alias rr='ranger'
 
-# navigation
-cx() { cd "$@" && l; }
-fcd() { cd "$(find . -type d -not -path '*/.*' | fzf)" && l; }
-f() { echo "$(find . -type f -not -path '*/.*' | fzf)" | pbcopy }
-fv() { nvim "$(find . -type f -not -path '*/.*' | fzf)" }
+# Remove a cloned repo directory. Warns if there are uncommitted changes.
+# Run from within the clone you want to delete.
+unalias gd 2>/dev/null
+gd() {
+  local cwd="$(pwd)"
+  local clone_name="$(basename "$cwd")"
 
-eval "$(zoxide init zsh)"
+  # Check for uncommitted changes
+  if [[ -n "$(git status --porcelain 2>/dev/null)" ]]; then
+    echo "Warning: You have uncommitted changes:"
+    git status --short
+    echo ""
+    if ! gum confirm "Delete anyway?"; then
+      echo "Aborted"
+      return 1
+    fi
+  fi
+
+  # Check for unpushed commits
+  local unpushed="$(git log --oneline @{upstream}..HEAD 2>/dev/null)"
+  if [[ -n "$unpushed" ]]; then
+    echo "Warning: You have unpushed commits:"
+    echo "$unpushed"
+    echo ""
+    if ! gum confirm "Delete anyway?"; then
+      echo "Aborted"
+      return 1
+    fi
+  fi
+
+  if gum confirm "Remove clone '$clone_name'?"; then
+    cd ..
+    rm -rf "$clone_name"
+    echo "Removed $clone_name"
+  fi
+}
