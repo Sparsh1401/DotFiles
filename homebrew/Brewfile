@@ -39,6 +39,7 @@ brew "unzip"
 # Cask Applications (GUI Apps)
 cask "claude"
 cask "docker"
+cask "font-comic-shanns-mono-nerd-font"
 cask "font-hack-nerd-font"
 cask "google-cloud-sdk"
 cask "monitorcontrol"
