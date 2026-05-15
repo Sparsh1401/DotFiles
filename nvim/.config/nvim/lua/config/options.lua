@@ -16,6 +16,9 @@ opt.splitbelow = true -- Horizontal splits open below
 -- Disable swap files (autosave is enabled)
 opt.swapfile = false
 
+-- Normal undo (disable persistent undo — avoids time-based undo on file reload)
+opt.undofile = false
+
 -- Sign column settings
 opt.signcolumn = "yes" -- Always show sign column
 opt.number = true -- Show line numbers

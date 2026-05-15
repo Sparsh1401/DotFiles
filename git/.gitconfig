@@ -1,5 +1,5 @@
 [user]
-    email = sparsh.agarwal@vwo.com
+	email = sparshagarwal811@gmail.com
     name = Sparsh Agarwal
 
 [alias]
@@ -17,7 +17,6 @@
 
 [core]
     editor = nvim
-    pager = delta
 
 [init]
     defaultBranch = main
@@ -38,3 +37,5 @@
 
 [diff]
     colorMoved = default
+[pager]
+	diff = diffnav

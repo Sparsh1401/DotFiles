@@ -1,6 +1,15 @@
 # Ghostty Configuration
 
 # Font settings
-font-family = "Hack Nerd Font"
-font-style = italic
+font-family = "ComicShannsMono Nerd Font"
 font-size = 16
+
+# Appearance
+theme = Catppuccin Mocha
+background-opacity = 0.85
+background-blur-radius = 20
+window-decoration = false
+
+# Behavior
+mouse-hide-while-typing = true
+macos-option-as-alt = true

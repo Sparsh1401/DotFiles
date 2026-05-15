@@ -3,6 +3,11 @@ return {
   {
     "folke/snacks.nvim",
     opts = {
+      notifier = {
+        filter = function(notif)
+          return not notif.msg:find("nvim.lsp.inlayhint", 1, true)
+        end,
+      },
       explorer = {
         enabled = true,
         -- Enable search functionality

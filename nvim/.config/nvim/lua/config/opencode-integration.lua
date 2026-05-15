@@ -52,7 +52,7 @@ vim.keymap.set({ "n", "v" }, "<leader>op", function()
       "opencode",
       "run",
       "--model",
-      "anthropic/claude-haiku-4-5",
+      "anthropic/claude-haiku-4-5-20251001",
       file_ref .. " " .. input,
     }
 

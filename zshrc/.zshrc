@@ -123,7 +123,7 @@ export PATH
 printf '\eP$f{"hook": "SourcedRcFileForWarp", "value": { "shell": "zsh" }}\x9c'
 
 ### MANAGED BY RANCHER DESKTOP START (DO NOT EDIT)
-export PATH="/Users/sparshagarwal/.rd/bin:$PATH"
+export PATH="/Users/dante/.rd/bin:$PATH"
 ### MANAGED BY RANCHER DESKTOP END (DO NOT EDIT)
 
 # Added by Antigravity
@@ -139,6 +139,12 @@ export PATH="/opt/homebrew/opt/node@22/bin:$PATH"
 
 
 export PATH="$HOME/.local/bin:$PATH"
+
+# Claude Code configuration aliases
+alias claude-work='CLAUDE_CONFIG_DIR="$HOME/.claude-work" claude'
+alias claude-personal='CLAUDE_CONFIG_DIR="$HOME/.claude-personal" claude'
+alias cw='claude-work'
+alias cpl='claude-personal'
 
 # fzf shell integration
 source <(fzf --zsh)
